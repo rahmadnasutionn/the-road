@@ -36,6 +36,131 @@ html {
     overflow: hidden;
 }
 
+.navbar-icon {
+    width: 5.5rem;
+    height: 5.5rem;
+    background-color: var(--white-color);
+    border-radius: 50%;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.open-navbar-icon {
+    position: fixed;
+    top: 6.5rem;
+    left: 6.5rem;
+    z-index: 500;
+    transition: opacity 0.3s;
+}
+
+.change .open-navbar-icon {
+    opacity: 0;
+}
+
+.navbar-icon .line {
+    height: .2rem;
+    width: 3.5rem;
+    background-color: var(--light-grey-color);
+}
+
+.open-navbar-icon .line {
+    margin: 0.3rem 0;
+}
+
+.navbar-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, .7);
+    position: fixed;
+    left: 0;
+    bottom: -100%;
+    opacity: 0;
+    z-index: 30;
+    padding: 3.5rem 5.5rem 3.5rem 3.5rem;
+    transition: bottom .5s, opacity .2s;
+}
+
+.change .navbar-wrapper {
+    bottom: 0;
+    opacity: 1;
+    transition: bottom .5s, opacity .2s .25s;
+}
+
+.navbar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .3)), url(../images/navbar-bg.jpg) center no-repeat;
+    position: relative;
+    background-size: cover;
+    overflow-y: hidden;
+}
+
+.close-navbar-icon {
+    position: absolute;
+    top: 2.5rem;
+    right: 3rem;
+    z-index: 300;
+}
+
+.close-navbar-icon .line {
+    position: absolute;
+}
+
+.line-1 {
+    transform: rotate(40deg);
+}
+
+.line-2 {
+    transform: rotate(-40deg);
+}
+
+.nav-list {
+    height: 100%;
+    display: flex;
+}
+
+.nav-link {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--white-color);
+    text-transform: capitalize;
+    width: 100%;
+    opacity: .8;
+    transition: all .3s;
+    position: relative;
+    top: -100%;
+    transition: all 0.3s;
+}
+
+.change .nav-link {
+    top: 0;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: var(--white-color);
+}
+
+.change .nav-link:nth-child(1) {
+    transition: top 1s .4s, opacity .3s, color .3s;
+}
+
+.change .nav-link:nth-child(2) {
+    transition: top 1s .6s, opacity .3s, color .3s;
+}
+
+.change .nav-link:nth-child(3) {
+    transition: top 1s .8s, opacity .3s, color .3s;
+}
+
+.change .nav-link:nth-child(4) {
+    transition: top 1s 1s, opacity .3s, color .3s;
+}
+
+.change .nav-link:nth-child(5) {
+    transition: top 1s 1.2s, opacity .3s, color .3s;
+}
+
 .header {
     width: 100%;
     height: calc(100vh - 7rem);
@@ -368,7 +493,9 @@ html {
 .contact {
     padding: 15rem 0 20rem 0;
     text-align: center;
-    background-color: #555;
+    background: url(../images/contact-bg.jpg) center no-repeat;
+    background-size: cover;
+    animation: contact-bg 35s infinite;
 }
 
 .contact-heading {
@@ -493,4 +620,129 @@ html {
     color: var(--secondary-color);
     letter-spacing: .1rem;
     margin-top: 1rem;
+}
+
+@keyframes contact-bg {
+    0% {
+        background-color: #3d3d3d;
+    }
+    25% {
+        background-color: #ced8e4;
+    }
+    50% {
+        background-color: #1e81f3;
+    }
+    75% {
+        background-color: #ff7842;
+    }
+    100% {
+        background-color: #3d3d3d;
+    }
+}
+
+@media(max-width: 1200px) {
+    .card {
+        margin: 0 2rem;
+    }
+    .story-bg {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .nav-list {
+        flex-direction: column;
+    }
+    .nav-link {
+        flex-grow: 1;
+    }
+    .header-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+    }
+    .heading {
+        font-size: 6rem;
+    }
+    .header-paragraph {
+        font-size: 2rem;
+    }
+    .popular-tours-heading {
+        font-size: 5rem;
+    }
+    .story-bg {
+        transform: skewX(0);
+    }
+    .story {
+        flex-direction: column;
+        align-items: center;
+        transform: skewX(0);
+    }
+    .story-img {
+        margin-bottom: 1rem;
+    }
+    .story-text .story-heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .cards-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        margin-bottom: 2rem;
+    }
+    .header-paragraph {
+        display: none;
+    }
+    .popular-tours-heading {
+        font-size: 3rem;
+    }
+    .contact-form {
+        width: 90%;
+    }
+    .footer-list {
+        align-items: center;
+        flex-direction: column;
+    }
+    .footer-link {
+        margin: 1rem 0;
+    }
+    .story-text .story-heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .container {
+        margin: 0;
+    }
+    .open-navbar-icon {
+        top: 2.5rem;
+        left: 2.5rem;
+    }
+    .navbar-wrapper {
+        padding: 0;
+    }
+    .close-navbar-icon {
+        right: 4rem;
+    }
+    .header {
+        height: 100vh;
+    }
+    .contact-heading {
+        font-size: 4rem;
+    }
+    .contact-form {
+        padding: 2rem;
+        height: 40rem;
+    }
 }
